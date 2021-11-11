@@ -11,6 +11,8 @@ public class JenkinsIT {
        System.out.println("STRY0010045: Story update");
        System.out.println("STRY0010090: Story update");
        System.out.println("STRY0010099: Adding new Junit test for newly added methods");
+       System.out.println("STRY0010095: Story update");
+       System.out.println("STRY0010096: Story update");
     
     }
 
