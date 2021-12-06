@@ -1,7 +1,7 @@
 
 def artifactname = "JenkinsDevOpsProject-0.0.1-SNAPSHOT-main.jar"
 def repoName = "JenkinsDevOpsProject"
-def pipelineName = "SunilDevOps-Multibranch-Project"
+def pipelineName = "SunilPipeline"
 def semanticVersion = "${env.BUILD_NUMBER}.0.0"
 def packageName = "JenkinsDevOpsProject-package_main-${env.BUILD_NUMBER}"
 def version = "${env.BUILD_NUMBER}.0"
