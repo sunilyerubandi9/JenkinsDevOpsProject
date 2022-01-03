@@ -1,6 +1,6 @@
 def artifactname = "rome-rp1-app.jar"
 def repoName = "JenkinsDevOpsProject"
-def pipelineName = "sunil_scripted_pipeline"
+def pipelineName = "Sunil-Scripted-Pipeline-Sonar"
 def semanticVersion = "${env.BUILD_NUMBER}.0.0"
 def packageName = "rome-rp1-package_${env.BUILD_NUMBER}"
 def version = "${env.BUILD_NUMBER}.0"
