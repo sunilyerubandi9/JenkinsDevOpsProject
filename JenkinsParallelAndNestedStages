@@ -49,7 +49,10 @@ pipeline {
 							stage("parallelTest1 - nested_inside_parallel") {
 								steps {
 									echo'parallelTest1 - nested_inside_parallel'
-									sh'mvn test -Dtest="TestJenkinsITTest*" -Dpublish'
+									sh'mvn test -Dtest="TestJenkinsITTest01" -Dpublish'
+									sh'mvn test -Dtest="TestJenkinsITTest02" -Dpublish'
+									sh'mvn test -Dtest="TestJenkinsITTest03" -Dpublish'
+									sh'mvn test -Dtest="TestJenkinsITTest04" -Dpublish'
                                 	sleep 5
 									//junit"**/target/surefire-reports/TestJenkinsITTest*.xml"
 									sleep 15
@@ -75,7 +78,9 @@ pipeline {
 						stage("parallelTest2 - nested_inside_parallel2:") {
 							steps {
 								sleep 20
-								sh'mvn test -Dtest="TestJenkinsUnitTest*" -Dpublish'
+								sh'mvn test -Dtest="TestJenkinsUnitTest01" -Dpublish'
+								sh'mvn test -Dtest="TestJenkinsUnitTest02" -Dpublish'
+								sh'mvn test -Dtest="TestJenkinsUnitTest03" -Dpublish'
 								echo'parallelTest2 - nested_inside_parallel2: -  UnitTests in progress'
 								sleep 5
 								//junit"**/target/surefire-reports/*TestJenkinsUnitTest*.xml"
