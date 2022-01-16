@@ -1,4 +1,4 @@
-package com.sn.unittests;
+package com.sn.jenkinsittests;
 
 import static org.junit.Assert.assertTrue;
 
@@ -7,14 +7,13 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class TestDevOpsApp04
+public class TestJenkinsITTest03 
 {
     /**
      * Rigorous Test :-)
      */
    // @Test
-    public void shouldAnswerWithTrue()
-    {
+    public void shouldAnswerWithTrue() {
         //new change
         //new change for Cascade Delete
         //Another change for Cascade Delete

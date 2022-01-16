@@ -1,4 +1,4 @@
-package com.sn.jenkinsittests;
+package com.sn.unittests;
 
 import static org.junit.Assert.assertTrue;
 
@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class TestDevOpsApp03 
+public class TestJenkinsUnitTest02  
 {
     /**
      * Rigorous Test :-)

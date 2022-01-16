@@ -7,14 +7,13 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class TestDevOpsApp01
+public class TestJenkinsUnitTest03 
 {
     /**
      * Rigorous Test :-)
      */
-    @Test
-    public void shouldAnswerWithTrue()
-    {
+   // @Test
+    public void shouldAnswerWithTrue() {
         //new change
         //new change for Cascade Delete
         //Another change for Cascade Delete

@@ -7,12 +7,12 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class TestDevOpsApp07
+public class TestJenkinsUnitTest01
 {
     /**
      * Rigorous Test :-)
      */
-    //@Test
+    @Test
     public void shouldAnswerWithTrue()
     {
         //new change

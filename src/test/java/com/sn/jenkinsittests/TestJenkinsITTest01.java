@@ -1,21 +1,17 @@
-package com.sn.unittests;
+package com.sn.jenkinsittests;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 /**
  * Unit test for simple App.
  */
-public class TestDevOpsApp11
+public class TestJenkinsITTest01
 {
     /**
      * Rigorous Test :-)
      */
-	
-	String devOpsTitle = "DevOps";
-	
     @Test
     public void shouldAnswerWithTrue()
     {
@@ -25,15 +21,6 @@ public class TestDevOpsApp11
         //Third Change
         //Change for Cascade Delete, again
         //Change For validation of PipelineUI Tests
-    	assertTrue( true );
+        assertTrue( true );
     }
-    
-    @Test
-    public void validateAddMethods()
-    {
-
-       // assertTrue( false );
-
-        assertTrue(devOpsTitle.equals("DevOps"));
-    }
-}                                                                       
+}
