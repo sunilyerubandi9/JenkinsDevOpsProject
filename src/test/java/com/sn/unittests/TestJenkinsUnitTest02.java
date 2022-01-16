@@ -13,7 +13,7 @@ public class TestJenkinsUnitTest02
      * Rigorous Test :-)
      */
    // @Test
-    public void shouldAnswerWithTrue2() {
+    public void shouldAnswerWithTrueUnit2() {
         //new change
         //new change for Cascade Delete
         //Another change for Cascade Delete

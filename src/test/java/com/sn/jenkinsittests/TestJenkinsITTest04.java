@@ -13,7 +13,7 @@ public class TestJenkinsITTest04
      * Rigorous Test :-)
      */
    // @Test
-    public void shouldAnswerWithTrue4()
+    public void shouldAnswerWithTrueITTest4()
     {
         //new change
         //new change for Cascade Delete
