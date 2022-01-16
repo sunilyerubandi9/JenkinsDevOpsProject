@@ -1,6 +1,7 @@
-package com.sn.TestSNOWPolarisUIRepo;
+package com.sn.unittests;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.junit.Ignore;
@@ -8,7 +9,7 @@ import org.junit.Ignore;
 /**
  * Unit test for simple App.
  */
-public class TestDevOpsApp10
+public class TestDevOpsApp12
 {
     /**
      * Rigorous Test :-)
@@ -28,11 +29,26 @@ public class TestDevOpsApp10
         assertTrue( true );
     }
     
+    
+    @Test
+    public void validateAddMethod1()
+    {
+        // assertTrue( false );
+        assertTrue(devOpsTitle.equals("DevOps"));
+    }
+    
     @Test
     @Ignore
-    public void validateAddMethods()
+    public void validateAddMethods2()
     {
-        assertTrue( true );
+      //  assertTrue( true );
+        assertTrue(devOpsTitle.equals("DevOps"));
+    }
+    
+    @Test
+    public void validateAddMethods3()
+    {
+        // assertTrue( false );
         assertTrue(devOpsTitle.equals("DevOps"));
     }
 }

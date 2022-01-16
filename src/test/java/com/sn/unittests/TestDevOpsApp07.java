@@ -1,22 +1,18 @@
-package com.sn.TestSNOWPolarisUIRepo;
+package com.sn.unittests;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 /**
  * Unit test for simple App.
  */
-public class TestDevOpsApp11
+public class TestDevOpsApp07
 {
     /**
      * Rigorous Test :-)
      */
-	
-	String devOpsTitle = "DevOps";
-	
-    @Test
+    //@Test
     public void shouldAnswerWithTrue()
     {
         //new change
@@ -25,15 +21,6 @@ public class TestDevOpsApp11
         //Third Change
         //Change for Cascade Delete, again
         //Change For validation of PipelineUI Tests
-    	assertTrue( true );
+        assertTrue( true );
     }
-    
-    @Test
-    public void validateAddMethods()
-    {
-
-       // assertTrue( false );
-
-        assertTrue(devOpsTitle.equals("DevOps"));
-    }
-}                                                                       
+}

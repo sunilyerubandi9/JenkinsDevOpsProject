@@ -1,4 +1,4 @@
-package com.sn.TestSNOWPolarisUIRepo;
+package com.sn.unittests;
 
 import static org.junit.Assert.assertTrue;
 
@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class TestDevOpsApp06
+public class TestDevOpsApp04
 {
     /**
      * Rigorous Test :-)

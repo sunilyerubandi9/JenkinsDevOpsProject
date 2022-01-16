@@ -29,12 +29,10 @@ pipeline {
 					      
 					stage("Build_Nested") {
 					    steps {
-					        echo"Build_Nested: build 1.1 executed"
+					        echo"Build_Nested: build 1.2 executed"
 						  	sh'mvn clean'
 						  	sleep 10
-	                  		//snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"main"}""")
-					        sleep 5
-						  	snDevOpsPackage(name: "${packageName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "${repoName}"}], "branchName":"main"}""")
+	                  	  	snDevOpsPackage(name: "${packageName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "${repoName}"}], "branchName":"main"}""")
 	                  		sleep 20
 						  	snDevOpsChange()
 					        //sonarSummaries()
@@ -48,24 +46,24 @@ pipeline {
 					stage('parallelTest1') {
 						// Nested stage inside parallel
 						stages {
-							stage("nested_inside_parallel") {
+							stage("parallelTest1 - nested_inside_parallel") {
 								steps {
-									echo'nested_inside_parallel: nested_inside_parallel'
-									sh'mvn test -Dtest="TEST.*.*" -Dpublish'
+									echo'parallelTest1 - nested_inside_parallel'
+									sh'mvn test -Dtest="TEST-com.sn.jenkinsittests.*" -Dpublish'
                                 	sleep 5
-									//junit"**/target/surefire-reports/*unittests.*.xml"
+									//junit"**/target/surefire-reports/TEST-com.sn.jenkinsittests.*.xml"
 									sleep 15
 								}
 								post{
 									success{
-										echo'nested_inside_parallel: Test1-success'
-										junit"**/target/surefire-reports/TEST.*.xml"
+										echo'parallelTest1 - nested_inside_parallel: Test1-success'
+										junit"**/target/surefire-reports/TEST-com.sn.jenkinsittests.*.xml"
 									}
 								}
 							}
                         stage("Deploy1"){
 							steps {
-								echo'CR1'
+								echo'Deploy1 - CR1'
 								sleep 10
 								snDevOpsChange()
 							}
@@ -74,11 +72,11 @@ pipeline {
 				} // end of parallelTest1
 			stage('parallelTest2') {
 					stages {
-						stage("nested_inside_parallel2") {
+						stage("parallelTest2 - nested_inside_parallel2:") {
 							steps {
 								sleep 20
-								sh 'mvn test -Dtest="TEST.*.*" -Dpublish'
-								echo'parallelTest2: Test2 in progress'
+								sh 'mvn test -Dtest="TEST-com.sn.unittests.*" -Dpublish'
+								echo'parallelTest2 - nested_inside_parallel2: -  Test2 in progress'
 								sleep 5
 								//junit"**/target/surefire-reports/TEST.*.xml"
 								sleep 15
@@ -88,13 +86,13 @@ pipeline {
 							post{
 								success{
 									echo'parallelTest2: nested_inside_parallel2: Test2-success'
-									junit"**/target/surefire-reports/TEST.*.xml"
+									junit"**/target/surefire-reports/TEST-com.sn.unittests.*.xml"
 								}
 							}
 						}
 						stage("Deploy2") {
 							steps {
-								echo'CR2'
+								echo'Deploy2 - CR2'
 								sleep 15
 								snDevOpsChange()
 							}

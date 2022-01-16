@@ -1,4 +1,4 @@
-package com.sn.TestSNOWPolarisUIRepo;
+package com.sn.unittests;
 
 import static org.junit.Assert.assertTrue;
 
@@ -7,14 +7,13 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class TestDevOpsApp05
+public class TestDevOpsApp03 
 {
     /**
      * Rigorous Test :-)
      */
    // @Test
-    public void shouldAnswerWithTrue()
-    {
+    public void shouldAnswerWithTrue() {
         //new change
         //new change for Cascade Delete
         //Another change for Cascade Delete

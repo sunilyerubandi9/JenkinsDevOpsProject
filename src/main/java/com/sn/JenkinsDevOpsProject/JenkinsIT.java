@@ -1,4 +1,4 @@
-package com.sn.TestSNOWPolarisUIRepo;
+package com.sn.JenkinsDevOpsProject;
 
 /**
  * Hello world!

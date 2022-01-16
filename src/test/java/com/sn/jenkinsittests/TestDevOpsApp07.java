@@ -1,4 +1,4 @@
-package com.sn.TestSNOWPolarisUIRepo;
+package com.sn.jenkinsittests;
 
 import static org.junit.Assert.assertTrue;
 
@@ -7,12 +7,12 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class TestDevOpsApp01
+public class TestDevOpsApp07
 {
     /**
      * Rigorous Test :-)
      */
-    @Test
+    //@Test
     public void shouldAnswerWithTrue()
     {
         //new change

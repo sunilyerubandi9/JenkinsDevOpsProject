@@ -1,4 +1,4 @@
-package com.sn.TestSNOWPolarisUIRepo;
+package com.sn.unittests;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
@@ -9,7 +9,7 @@ import org.junit.Ignore;
 /**
  * Unit test for simple App.
  */
-public class TestDevOpsApp19
+public class TestDevOpsApp15
 {
     /**
      * Rigorous Test :-)
