@@ -18,7 +18,7 @@ pipeline {
 			    
 				    stage("Build_artifact") {
 					    steps {
-						    echo"build 1.1 executed"
+						    echo"Build_artifact: build 1.1 executed"
 							sh'mvn clean'
 							sleep 10
 			                snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": 	"${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"main"}""")
@@ -29,7 +29,7 @@ pipeline {
 					      
 					stage("Build_Nested") {
 					    steps {
-					        echo"build 1.1 executed"
+					        echo"Build_Nested: build 1.1 executed"
 						  	sh'mvn clean'
 						  	sleep 10
 	                  		//snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"main"}""")
@@ -50,7 +50,7 @@ pipeline {
 						stages {
 							stage("nested_inside_parallel") {
 								steps {
-									echo'nested_inside_parallel'
+									echo'nested_inside_parallel: nested_inside_parallel'
 									sh'mvn test -Dtest="unittests.*" -Dpublish'
                                 	sleep 5
 									//junit"**/target/surefire-reports/*unittests.*.xml"
@@ -58,8 +58,8 @@ pipeline {
 								}
 								post{
 									success{
-										echo'Test1-success'
-										junit"**/target/surefire-reports/*unittests.*.xml"
+										echo'nested_inside_parallel: Test1-success'
+										junit"**/target/surefire-reports/TEST.*.xml"
 									}
 								}
 							}
@@ -78,7 +78,7 @@ pipeline {
 							steps {
 								sleep 20
 								sh 'mvn test -Dtest="TEST.*" -Dpublish'
-								echo'Test2 in progress'
+								echo'parallelTest2: Test2 in progress'
 								sleep 5
 								//junit"**/target/surefire-reports/TEST.*.xml"
 								sleep 15
@@ -87,7 +87,7 @@ pipeline {
 							}
 							post{
 								success{
-									echo'Test2-success'
+									echo'parallelTest2: nested_inside_parallel2: Test2-success'
 									junit"**/target/surefire-reports/TEST.*.xml"
 								}
 							}
