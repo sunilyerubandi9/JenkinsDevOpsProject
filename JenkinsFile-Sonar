@@ -1,10 +1,10 @@
-def artifactname = "rome-rp1-app.jar"
+def artifactname = "devops-snow-build-app.jar"
 def repoName = "JenkinsDevOpsProject"
-def pipelineName = "Sunil-Scripted-Pipeline-Sonar"
+def pipelineName = "SNOW-DevOps-Pipeline"
 def semanticVersion = "${env.BUILD_NUMBER}.0.0"
-def packageName = "rome-rp1-package_${env.BUILD_NUMBER}"
+def packageName = "devops-snow-build-pkg_${env.BUILD_NUMBER}"
 def version = "${env.BUILD_NUMBER}.0"
-def pkgName = "rome-rp1-package"
+def pkgName = "devops-snow-build-pkg"
 
 pipeline {
   agent any
@@ -40,7 +40,7 @@ pipeline {
                     snDevOpsChange(ignoreErrors:false)
                     sonarSummaries()
                     snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"main"}""")
-           			snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "${repoName}"}], "branchName":"main"}""")
+           	    snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "${repoName}"}], "branchName":"main"}""")
                     
                  }
       }
