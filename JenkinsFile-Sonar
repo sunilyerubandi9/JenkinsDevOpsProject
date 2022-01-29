@@ -38,7 +38,7 @@ pipeline {
                     
                     echo 'Deploying the change....'
                     snDevOpsChange(ignoreErrors:false)
-                   // sonarSummaries()
+                    sonarSummaries()
                     snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"main"}""")
            	    snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "${repoName}"}], "branchName":"main"}""")
                     
@@ -57,7 +57,7 @@ def sonarSummaries() {
    
 	//}
 	
-    withSonarQubeEnv('sonarQube_local') {
+    withSonarQubeEnv('sunil_testing') {
        	sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner.properties'
    		// sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/sonar-scanner.properties'
 	}
