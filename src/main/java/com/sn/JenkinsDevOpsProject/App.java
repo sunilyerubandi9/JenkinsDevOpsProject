@@ -15,6 +15,7 @@ public class App {
     	System.out.println("a - b = "+ obj.subtact(5,6));
     	System.out.println("a * b = "+ obj.multiply(5,6));
     	System.out.println("a / b = "+ obj.division(30,6));
+    	System.out.println("a / b = "+ obj.division(42,6));
   
     }
     
