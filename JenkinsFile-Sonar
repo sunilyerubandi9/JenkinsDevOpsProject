@@ -37,8 +37,8 @@ pipeline {
                  steps {
                     
                     echo 'Deploying the change....'
+		    sonarSummaries()
                     snDevOpsChange(ignoreErrors:false)
-                 //   sonarSummaries()
                     snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"main"}""")
            	    snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "${repoName}"}], "branchName":"main"}""")
                     
