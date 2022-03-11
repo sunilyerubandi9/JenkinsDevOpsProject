@@ -69,3 +69,5 @@ Update 11 - at UTC 19th Jan 6:48 AM
 Update 12 - at UTC 19th Jan 1:07 PM
 
 Update 13 - New Jenkins Sonar Pipeline File added Jan 29 7:00 PM IST
+
+Update 14 - Adding the Jenkins file fo JFrog Artifacts import
