@@ -41,7 +41,7 @@ pipeline {
                              def server = Artifactory.server 'devopsbalujfrog'
                              def uploadSpec= """{
                                 "files": [{
-                                   "pattern": "/var/jenkins_home/workspace/SunilPipelines/Sunil-JFrog-Scripted-Pipeline1/target/sunil_jfrog_demo_artifact.jar",
+                                   "pattern": "/var/jenkins_home/workspace/SunilPipelines/Sunil-JFrog-Scripted-Pipeline1/target/JenkinsDevOpsProject-0.0.1-SNAPSHOT.jar",
                                    "target":"default-docker-local/sunil-jfrog-artifacts/"
                                 }]
                              }"""
@@ -64,7 +64,7 @@ pipeline {
                              def server = Artifactory.server 'devopsbalujfrog'
                              def downSpec= """{
                                 "files": [{
-                                   "pattern": "default-docker-local/sunil-jfrog-artifacts/sunil_jfrog_demo_artifact.jar",
+                                   "pattern": "default-docker-local/sunil-jfrog-artifacts/`JenkinsDevOpsProject-0.0.1-SNAPSHOT.jar",
                                    "target":"default-docker-local/sunil-jfrog-artifacts/"
                                 }]
                              }"""
