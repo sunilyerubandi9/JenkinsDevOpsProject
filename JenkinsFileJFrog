@@ -1,31 +1,23 @@
 def semanticVersion = "${env.BUILD_NUMBER}.0.0"
-def packageName = "devops_pipeline_demo_${env.BUILD_NUMBER}"
+def packageName = "sunil_devops_jfrog_pkg_${env.BUILD_NUMBER}"
 def version = "${env.BUILD_NUMBER}.0"
+
 pipeline {
     agent any
-  //  tools { 
-    //    maven 'Maven' 
-    //}
-    environment {
-        SCANNER_HOME = tool 'sonarScanner'
+    tools { 
+        maven 'Maven' 
     }
     stages {
         stage("Build") {
             steps {
                 echo "Building..."
-                sh '/usr/local/bin/mvn clean install -DskipTests=true'
-            }
-        }
-        stage("SoftwareQuality") {
-            steps {
-            	echo "Software Quality..."
-                sonarTest()
+                sh 'mvn clean install -DskipTests=true'
             }
         }
         stage("Test") {
             steps {
             	echo "Testing..."
-                sh "/usr/local/bin/mvn test -Dpublish"
+                sh "mvn test -Dpublish"
                 junit "**/target/surefire-reports/*.xml"
             }
         }
@@ -33,28 +25,15 @@ pipeline {
             steps {
                 echo "Deploying.."
                 snDevOpsArtifact(artifactsPayload:"""{"artifacts": [
-                    {"name": "demo1.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "demo1"},
-                    {"name": "demo2.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "demo2"},
-                    {"name": "demo3.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "demo3"},
-                    {"name": "demo4.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "demo4"},
-                    {"name": "demo5.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "demo5"}]}""")
+                    {"name": "sunil_jfrog_demo_artifact.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "JenkinsDevOpsProject"}]}""")
                 }
         }
         stage("Prod") {
             steps {
             	echo "Prod deploy..."
                 snDevOpsPackage(name: "${packageName}", artifactsPayload: """{"artifacts": [
-                    {"name": "demo1.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "demo1"},
-                    {"name": "demo2.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "demo2"},
-                    {"name": "demo3.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "demo3"},
-                    {"name": "demo4.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "demo4"},
-                    {"name": "demo5.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "demo5"}]}""")
-            }
+                    {"name": "sunil_jfrog_demo_pkg.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "JenkinsDevOpsProject"}]}""")
+                }
         }
-    }
-}
-def sonarTest() {
-    withSonarQubeEnv('SonarQube_Cloud') {
-	    sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/sonar-scanner.properties'
     }
 }
