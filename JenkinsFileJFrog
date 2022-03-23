@@ -22,13 +22,13 @@ pipeline {
             }
         }
 
-        <!-- stage("Deploy") {
-            steps {
-                echo "Deploying.."
-                snDevOpsArtifact(artifactsPayload:"""{"artifacts": [
-                    {"name": "sunil_jfrog_demo_artifact.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "JenkinsDevOpsProject"}]}""")
-                }
-        } -->
+      // stage("Deploy") {
+      //      steps {
+      //         echo "Deploying.."
+      //          snDevOpsArtifact(artifactsPayload:"""{"artifacts": [
+       //             {"name": "sunil_jfrog_demo_artifact.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "JenkinsDevOpsProject"}]}""")
+        //        }
+        //}
 
         stage('Deploy-Upload-JFrog_Artifact') {
             steps {
@@ -80,12 +80,12 @@ pipeline {
        
        } //end of stage
 
-       <!-- stage("Prod") {
-            steps {
-            	echo "Prod deploy..."
-                snDevOpsPackage(name: "${packageName}", artifactsPayload: """{"artifacts": [
-                    {"name": "sunil_jfrog_demo_pkg.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "JenkinsDevOpsProject"}]}""")
-                }
-        } --> 
+       // stage("Prod") {
+          //  steps {
+            //	echo "Prod deploy..."
+            //    snDevOpsPackage(name: "${packageName}", artifactsPayload: """{"artifacts": [
+              //      {"name": "sunil_jfrog_demo_pkg.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "JenkinsDevOpsProject"}]}""")
+             //   }
+        // }  
     }
 }
