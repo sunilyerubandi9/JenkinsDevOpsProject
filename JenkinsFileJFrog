@@ -88,4 +88,5 @@ pipeline {
                     {"name": "JenkinsDevOpsProject-1.34.0-SNAPSHOT.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "JenkinsDevOpsProject"}]}""")
                }
          }
-}
+    }
+ }
