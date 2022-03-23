@@ -1,6 +1,6 @@
 def semanticVersion = "${env.BUILD_NUMBER}.0.0"
 def packageName = "sunil_devops_jfrog_pkg_${env.BUILD_NUMBER}"
-def version = "${env.BUILD_NUMBER}.0"
+def version = "${env.BUILD_NUMBER}.0.0"
 
 pipeline {
     agent any
@@ -21,19 +21,71 @@ pipeline {
                 junit "**/target/surefire-reports/*.xml"
             }
         }
-        stage("Deploy") {
+
+        <!-- stage("Deploy") {
             steps {
                 echo "Deploying.."
                 snDevOpsArtifact(artifactsPayload:"""{"artifacts": [
                     {"name": "sunil_jfrog_demo_artifact.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "JenkinsDevOpsProject"}]}""")
                 }
-        }
-        stage("Prod") {
+        } -->
+
+        stage('Deploy-Upload-JFrog_Artifact') {
+            steps {
+                echo 'uploading jfrog artifact......'
+            }
+            
+            post {
+                always {
+                    script {
+                             def server = Artifactory.server 'devopsbalujfrog'
+                             def uploadSpec= """{
+                                "files": [{
+                                   "pattern": "/var/jenkins_home/workspace/SunilPipelines/job/Sunil-Scripted-Pipeline-Sonar/target/sunil_jfrog_demo_artifact.jar",
+                                   "target":"default-docker-local/sunil-jfrog-artifacts/"
+                                }]
+                             }"""
+            
+                          def buildInfo = server.upload(uploadSpec)
+                          server.publishBuildInfo buildInfo   
+                    }
+                    }
+               }
+            
+        }//end of stage
+        stage('Prod-Download-JFrog_Artifact') {
+            steps {
+                echo 'downloading jfrog artifact'
+            }
+            
+            post {
+                  always {       
+                   script {
+                             def server = Artifactory.server 'devopsbalujfrog'
+                             def downSpec= """{
+                                "files": [{
+                                   "pattern": "default-docker-local/sunil-jfrog-artifacts/sunil_jfrog_demo_artifact.jar",
+                                   "target":"default-docker-local/sunil-jfrog-artifacts/"
+                                }]
+                             }"""
+            
+                          def buildInfo = server.download(downSpec)
+                          server.publishBuildInfo buildInfo   
+                            
+                    
+                    } // end of script
+                    
+                   } //end of always
+            }//end of post
+       
+       } //end of stage
+
+       <!-- stage("Prod") {
             steps {
             	echo "Prod deploy..."
                 snDevOpsPackage(name: "${packageName}", artifactsPayload: """{"artifacts": [
-                    {"name": "sunil_jfrog_demo_artifact.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "JenkinsDevOpsProject"}]}""")
+                    {"name": "sunil_jfrog_demo_pkg.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "JenkinsDevOpsProject"}]}""")
                 }
-        }
+        } --> 
     }
 }
