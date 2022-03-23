@@ -55,7 +55,7 @@ pipeline {
         }//end of stage
         stage('Prod-Download-JFrog_Artifact') {
             steps {
-                echo 'downloading jfrog artifact'
+                echo 'downloading jfrog artifact from jfrog'
             }
             
             post {
