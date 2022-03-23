@@ -64,8 +64,8 @@ pipeline {
                              def server = Artifactory.server 'devopsbalujfrog'
                              def downSpec= """{
                                 "files": [{
-                                   "pattern": "default-docker-local/sunil-jfrog-artifacts2/JenkinsDevOpsProject-0.0.1-SNAPSHOT.jar",
-                                   "target":"default-docker-local/sunil-jfrog-artifacts-download/"
+                                   "pattern": "default-docker-local/sunil-jfrog-artifacts-download/Sunil-DevOpsProject-0.0.2-SNAPSHOT.jar",
+                                   "target":"/var/jenkins_home/workspace/SunilPipelines/Sunil-JFrog-Scripted-Pipeline1/target/"
                                 }]
                              }"""
             
