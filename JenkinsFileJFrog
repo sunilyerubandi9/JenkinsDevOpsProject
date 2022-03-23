@@ -32,7 +32,7 @@ pipeline {
             steps {
             	echo "Prod deploy..."
                 snDevOpsPackage(name: "${packageName}", artifactsPayload: """{"artifacts": [
-                    {"name": "sunil_jfrog_demo_pkg.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "JenkinsDevOpsProject"}]}""")
+                    {"name": "sunil_jfrog_demo_artifact.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "JenkinsDevOpsProject"}]}""")
                 }
         }
     }
