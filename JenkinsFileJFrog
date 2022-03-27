@@ -15,22 +15,7 @@ pipeline {
                 sh 'mvn clean install -DskipTests=true'
             }
         }
-       <!--  stage("Test") {
-            steps {
-            	echo "Testing..."
-                sh "mvn test -Dpublish"
-                junit "**/target/surefire-reports/*.xml"
-            }
-        }
-
-       stage("Deploy") {
-            steps {
-               echo "Deploying.."
-                snDevOpsArtifact(artifactsPayload:"""{"artifacts": [
-                    {"name": "sunil_jfrog_demo_artifact.jar","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "JenkinsDevOpsProject"}]}""")
-               }
-        } -->
-
+        
         stage('Upload-JFrog') {
             steps {
                 echo 'uploading jfrog artifact......'
@@ -77,12 +62,5 @@ pipeline {
                    } //end of always
             }//end of post
        } //end of stage
-       <!-- stage("Prod") {
-            steps {
-            	echo "Prod deploy..."
-                snDevOpsPackage(name: "${packageName1}", artifactsPayload: """{"artifacts": [
-                    {"name": "sunil-jfrog-artifacts-upload/JenkinsDevOpsProject-1.34.0-SNAPSHOT.jar#SunilPipelines :: Sunil-JFrog-Scripted-Pipeline1","version": "${version}","semanticVersion": "${semanticVersion}","repositoryName": "default-docker-local"}]}""")
-               }
-         } -->
     }
  }
