@@ -51,7 +51,7 @@ pipeline {
                              def downSpec= """{
                                 "files": [{
                                    "pattern": "sunil-snow-libs-snapshot-local/72/JenkinsDevOpsProject-1.35.0-SNAPSHOT.jar",
-                                   "target":"/var/jenkins_home/workspace/SunilPipelines/Sunil-JFrog-Scripted-Pipeline1/JFrog/${env.BUILD_NUMBER}/"
+                                   "target":"/tmp/"
                                 }]
                              }"""
             
