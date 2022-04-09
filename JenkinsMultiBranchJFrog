@@ -9,14 +9,14 @@ pipeline {
         maven 'Maven' 
     }
     stages {
-        stage("Build") {
+        stage("Build-Main") {
             steps {
                 echo "Building..."
                 sh 'mvn clean install -DskipTests=true'
             }
         }
         
-        stage('Upload-JFrog') {
+        stage('Upload-JFrog-Main') {
             steps {
                 echo 'uploading jfrog artifact......'
             }
