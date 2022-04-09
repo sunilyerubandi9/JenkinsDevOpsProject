@@ -24,10 +24,10 @@ pipeline {
             post {
                 always {
                     script {
-                             def server = Artifactory.server 'devopsbalujfrog'
+                             def server = Artifactory.server 'JFROG1'
                              def uploadSpec= """{
                                 "files": [{
-                                   "pattern": "/var/jenkins_home/workspace/SunilPipelines/Sunil-JFrog-MultiBranch-Pipeline/target/JenkinsDevOpsProject-1.36.0-SNAPSHOT.jar",
+                                   "pattern": "/tmp/Multiple_repo_Same_Name.jar",
                                    "target":"sunil-multibranch-maven/${env.BUILD_NUMBER}/"
                                 }]
                              }"""
@@ -48,11 +48,11 @@ pipeline {
             post {
                   always {       
                    script {
-                             def server = Artifactory.server 'devopsbalujfrog'
+                             def server = Artifactory.server 'JFROG1'
                              def downSpec= """{
                                 "files": [{
-                                   "pattern": "sunil-multibranch-maven/${env.BUILD_NUMBER}/JenkinsDevOpsProject-1.36.0-SNAPSHOT.jar",
-                                   "target":"/tmp/"
+                                   "pattern": "sunil-multibranch-maven/${env.BUILD_NUMBER}/Multiple_repo_Same_Name.jar",
+                                   "target":"/var/jenkins_home/workspace/SunilPipelines/Sunil-JFrog-MultiBranch-Pipeline/${env.BUILD_NUMBER}/"
                                 }]
                              }"""
             
