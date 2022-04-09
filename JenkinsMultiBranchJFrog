@@ -27,7 +27,7 @@ pipeline {
                              def server = Artifactory.server 'devopsbalujfrog'
                              def uploadSpec= """{
                                 "files": [{
-                                   "pattern": "/var/jenkins_home/workspace/SunilPipelines/Sunil-JFrog-MultiBranch-Pipeline/target/JenkinsDevOpsProject-1.36.0-SNAPSHOT.jar",
+                                   "pattern": "/var/jenkins_home/workspace/_JFrog-MultiBranch-Pipeline_main/target/JenkinsDevOpsProject-1.36.0-SNAPSHOT.jar",
                                    "target":"sunil-multibranch-maven/${env.BUILD_NUMBER}/"
                                 }]
                              }"""
