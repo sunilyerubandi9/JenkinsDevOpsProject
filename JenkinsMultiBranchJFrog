@@ -23,7 +23,7 @@ pipeline {
                              def downSpec= """{
                                 "files": [{
                                    "pattern": "sunil-multibranch-maven/${env.BUILD_NUMBER}/JenkinsDevOpsProject-1.36.0-SNAPSHOT.jar",
-                                   "target":"/tmp/"
+                                   "target":"/var/jenkins_home/workspace/Frog-MultiBranch-Pipeline_master/Jfrog/${env.BUILD_NUMBER}/"
                                 }]
                              }"""
             
