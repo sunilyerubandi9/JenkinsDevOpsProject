@@ -1,0 +1,67 @@
+def semanticVersion = "${env.BUILD_NUMBER}.0.0"
+def packageName1 = "JenkinsDevOpsProject-1.36.0_pkg_${env.BUILD_NUMBER}"
+def packageName2 = "JFrogDefaultDocker_pkg_${env.BUILD_NUMBER}"
+def version = "${env.BUILD_NUMBER}.0.0"
+
+pipeline {
+    agent any
+    tools { 
+        maven 'Maven' 
+    }
+    stages {
+        stage("Build") {
+            steps {
+                echo "Building..."
+                sh 'mvn clean install -DskipTests=true'
+            }
+        }
+        
+        stage('Upload-JFrog') {
+            steps {
+                echo 'uploading jfrog artifact......'
+            }
+            
+            post {
+                always {
+                    script {
+                             def server = Artifactory.server 'devopsbalujfrog'
+                             def uploadSpec= """{
+                                "files": [{
+                                   "pattern": "/var/jenkins_home/workspace/SunilPipelines/Sunil-JFrog-MultiBranch-Pipeline/target/JenkinsDevOpsProject-1.36.0-SNAPSHOT.jar",
+                                   "target":"sunil-multibranch-maven/${env.BUILD_NUMBER}/"
+                                }]
+                             }"""
+            
+                          def buildInfo = server.upload(uploadSpec)
+                          server.publishBuildInfo buildInfo   
+                        }
+                    }
+               }
+            
+        }//end of stage
+        stage('Download-JFrog') {
+            steps {
+                echo 'downloading jfrog artifact from jfrog'
+                sleep 10
+            }
+            
+            post {
+                  always {       
+                   script {
+                             def server = Artifactory.server 'devopsbalujfrog'
+                             def downSpec= """{
+                                "files": [{
+                                   "pattern": "sunil-multibranch-maven/${env.BUILD_NUMBER}/JenkinsDevOpsProject-1.36.0-SNAPSHOT.jar",
+                                   "target":"/tmp/"
+                                }]
+                             }"""
+            
+                          def buildInfo = server.download(downSpec)
+                          server.publishBuildInfo buildInfo              
+                    } // end of script
+                    
+                   } //end of always
+            }//end of post
+       } //end of stage
+    }
+ }
