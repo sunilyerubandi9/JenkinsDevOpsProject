@@ -9,14 +9,8 @@ pipeline {
         maven 'Maven' 
     }
     stages {
-        stage("Build") {
-            steps {
-                echo "Building..."
-                sh 'mvn clean install -DskipTests=true'
-            }
-        }
         
-        stage('Upload-JFrog') {
+        stage('Upload-JFrog-Prod') {
             steps {
                 echo 'uploading jfrog artifact......'
             }
@@ -39,7 +33,7 @@ pipeline {
                }
             
         }//end of stage
-        stage('Download-JFrog') {
+        stage('Download-JFrog-Prod') {
             steps {
                 echo 'downloading jfrog artifact from jfrog'
                 sleep 10
