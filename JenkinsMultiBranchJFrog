@@ -10,7 +10,7 @@ pipeline {
     }
     stages {
         
-        stage('Download-JFrog') {
+        stage('Download-JFrog-Master') {
             steps {
                 echo 'downloading jfrog artifact from jfrog'
             }
