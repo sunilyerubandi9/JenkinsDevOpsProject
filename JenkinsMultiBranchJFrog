@@ -52,7 +52,7 @@ pipeline {
                              def downSpec= """{
                                 "files": [{
                                    "pattern": "sunil-multibranch-maven/${env.BUILD_NUMBER}/Multiple_repo_Same_Name.jar",
-                                   "target":"/var/jenkins_home/workspace/SunilPipelines/Sunil-JFrog-MultiBranch-Pipeline/${env.BUILD_NUMBER}/"
+                                   "target":"/var/jenkins_home/workspace/_JFrog-MultiBranch-Pipeline_prod/JFrog/${env.BUILD_NUMBER}/"
                                 }]
                              }"""
             
