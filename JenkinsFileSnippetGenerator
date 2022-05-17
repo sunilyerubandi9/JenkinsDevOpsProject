@@ -1,0 +1,68 @@
+  pipeline {
+			agent any
+			tools {
+				maven 'Maven'
+			}
+
+			stages {
+				stage("Build") {
+					steps {
+						echo "Building"
+						sh 'mvn -X clean install -DskipTests'
+					}
+				}
+
+				stage("Test") {
+					steps {
+						echo "Testing"
+						sh 'mvn test'
+					}
+					post {
+						always {
+							junit '**/target/surefire-reports/*.xml'
+						}
+					}
+				}
+
+				stage("Create Artifact for prod") {
+					steps {
+						echo "Creating artifact"
+						sh 'mvn package'
+						sleep 3
+						
+						snDevOpsArtifact(
+											artifactsPayload:"""
+												"artifacts":[
+													{
+														"name": "JenkinsDevOpsProject-mvp.jar", 
+														"version":"1.${env.BUILD_NUMBER}.0",
+														"repositoryName": "JenkinsDevOpsProject"
+													}
+												], 
+												
+												"branchName": "main"
+											""")
+					}
+				}
+
+				stage("Deploy") {
+					steps {
+						snDevOpsPackage(
+								"name": "JenkinsDevOpsProject-package",
+								artifactsPayload: """
+								{
+									"artifacts":[
+										{
+											"name": "JenkinsDevOpsProject-mvp.jar", 
+											"version":"1.${env.BUILD_NUMBER}.0",
+											"repositoryName": "JenkinsDevOpsProject"
+										}
+									], 
+									"branchName": "main"
+								}""")
+						echo ">> Deploy in prod"
+					}
+			}
+		}
+}
+
