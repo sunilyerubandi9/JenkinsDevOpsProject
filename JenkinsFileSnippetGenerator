@@ -67,7 +67,7 @@
 		    stage("Prod Deploy") {
 				steps {
 						snDevOpsChange(	
-						changeRequestDetails:{
+						"changeRequestDetails":"""{
 						        "setCloseCode": false,
 								 "attributes":{ 	
 								        "short_description": "Test Sunil desc", 
@@ -81,7 +81,7 @@
 										"work_notes": "test work", 
 										"assignment_group": "a715cd759f2002002920bde8132e7018" 
 								}
-								})
+								}"""")
 						echo ">> Prod Deploy in prod"
 					}
 			}
