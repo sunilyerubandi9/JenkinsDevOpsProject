@@ -48,7 +48,7 @@
 				stage("Deploy") {
 					steps {
 						snDevOpsPackage(
-								"name": "JenkinsDevOpsProject-package",
+								"packageName": "JenkinsDevOpsProject-package",
 								artifactsPayload: """
 								{
 									"artifacts":[
@@ -63,6 +63,26 @@
 						echo ">> Deploy in prod"
 					}
 		    }
-		  }
+
+		    stage("Prod Deploy") {
+				steps {
+						snDevOpsChange(	
+						        "setCloseCode": false,
+								 "attributes":{ 	
+								        "short_description": "Test Sunil desc", 
+										"priority": "1", 
+										"start_date": "2022-05-05 08:00:00", 
+										"end_date": "2022-06-06 08:00:00", 
+										"justification": "test just sunil ", 
+										"description": "test descri sunil", 
+										"cab_required": true, 
+										"comments": "This update for work notes is from jenkins file", 
+										"work_notes": "test work", 
+										"assignment_group": "a715cd759f2002002920bde8132e7018" 
+								})
+						echo ">> Prod Deploy in prod"
+					}
+			}
+		}
   }
 
