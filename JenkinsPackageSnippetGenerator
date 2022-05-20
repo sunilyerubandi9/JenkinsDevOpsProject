@@ -8,7 +8,7 @@
 				stage("Create Default Package for prod") {
 					steps {
 						      echo "Creating Package"
-						      snDevOpsPackage artifactsPayload: '{
+						      snDevOpsPackage artifactsPayload: """{
                                                         "artifacts":[{
                                                                         "name": "sa-web.jar", 
                                                                         "version": "1.9", 
@@ -20,7 +20,7 @@
                                                                         "repositoryName": "services-1032"
                                                                       }], 
                                                         "branchName": "master"
-                                                     }', 
+                                                     }""", 
                                    name: 'packageName'
 					    }
 				  }
