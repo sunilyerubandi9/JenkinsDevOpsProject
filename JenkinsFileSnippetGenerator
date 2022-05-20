@@ -8,7 +8,7 @@
 				stage("Create Artifact for prod") {
 					steps {
 						echo "Creating artifact"
-						snDevOpsArtifact artifactsPayload: '{
+						snDevOpsArtifact artifactsPayload: """{
 											"artifacts":[{
 													"name": "sa-web.jar", 
 													"version": "1.9", 
@@ -20,7 +20,7 @@
 													"repositoryName": "services-1032"
 													}], 
 											"branchName": "master"
-										    }', 
+										    }""", 
 								   ignoreErrors: true
 					}
 				}
