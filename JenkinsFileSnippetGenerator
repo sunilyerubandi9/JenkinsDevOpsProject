@@ -1,87 +1,28 @@
  pipeline {
-			agent any
-			tools {
-				maven 'Maven'
-			}
+		agent any
+		tools {
+			maven 'Maven'
+		}
 
-			stages {
-				stage("Build") {
-					steps {
-						echo "Building"
-						sh 'mvn -X clean install -DskipTests'
-					}
-				}
-
-				stage("Test") {
-					steps {
-						echo "Testing"
-						sh 'mvn test'
-					}
-					post {
-						always {
-							junit '**/target/surefire-reports/*.xml'
-						}
-					}
-				}
-
+		stages {
 				stage("Create Artifact for prod") {
 					steps {
 						echo "Creating artifact"
-						sh 'mvn package'
-						sleep 3
-						
-						snDevOpsArtifact(
-											artifactsPayload:"""{
-												"artifacts":[
-													{
-														"name": "JenkinsDevOpsProject-mvp.jar", 
-														"version":"1.${env.BUILD_NUMBER}.0",
-														"repositoryName": "JenkinsDevOpsProject"
-													}
-												], 
-												
-												"branchName": "main"
-											}""")
+						snDevOpsArtifact artifactsPayload: '{
+											"artifacts":[{
+													"name": "sa-web.jar", 
+													"version": "1.9", 
+													"repositoryName": "services-1031"
+												      }, 
+												      {
+												      	"name": "sa-db.jar", 
+													"version": "1.3.2", 
+													"repositoryName": "services-1032"
+													}], 
+											"branchName": "master"
+										    }', 
+								   ignoreErrors: true
 					}
 				}
-
-				stage("Deploy") {
-					steps {
-						snDevOpsPackage(
-								"name": "JenkinsDevOpsProject-package",
-								artifactsPayload: """
-								{
-									"artifacts":[
-										{
-											"name": "JenkinsDevOpsProject-mvp.jar", 
-											"version":"1.${env.BUILD_NUMBER}.0",
-											"repositoryName": "JenkinsDevOpsProject"
-										}
-									], 
-									"branchName": "main"
-								}""")
-						echo ">> Deploy in prod"
-					}
-		    }
-
-		    stage("Prod Deploy") {
-				steps {
-						snDevOpsChange(	
-						"changeRequestDetails":"""{
-						        "setCloseCode": false,
-								 "attributes":{ 	
-								        "short_description": "Test Sunil desc", 
-										"priority": "1", 
-										"start_date": "2022-05-05 08:00:00", 
-										"end_date": "2022-06-06 08:00:00", 
-										"justification": "test just sunil ", 
-										"description": "test descri sunil", 
-										"cab_required": true, 
-										"comments": "This update for work notes is from jenkins file", 
-										"work_notes": "test work", 
-										"assignment_group": "a715cd759f2002002920bde8132e7018"}}""")
-						echo ">> Prod Deploy in prod"
-					}
-			}
 		}
   }
