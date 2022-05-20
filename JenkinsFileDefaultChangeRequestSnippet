@@ -9,7 +9,7 @@ pipeline {
 					        steps {
 						              echo "Creating Change Request"
                           
-                          snDevOpsChange changeRequestDetails: '{ 
+                          snDevOpsChange changeRequestDetails: """{ 
                                                                   "attributes": { 
                                                                                     "short_description": "Test Jenkins File - Default CR desc", 
                                                                                     "priority": "1", 
@@ -23,7 +23,7 @@ pipeline {
                                                                                     "assignment_group": "a715cd759f2002002920bde8132e7018" 
                                                                                  }, 
                                                                    "setCloseCode": false 
-                                                                 }', 
+                                                                 }""", 
                                          ignoreErrors: true
   				        }
 				    }
