@@ -21,8 +21,7 @@
 													}], 
 											"branchName": "master"
 										    }""", 
-								   enabled: false,
-								   ignoreErrors: true
+								   enabled: false
 					}
 				}
 		}
