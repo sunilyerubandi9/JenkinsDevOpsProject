@@ -12,5 +12,12 @@
 					
 				             }
 		               }
+			       
+			       stage("Create Package for prod") {
+					steps {
+						echo "Creating packge"
+						
+				             }
+		               }
                 }
  }
