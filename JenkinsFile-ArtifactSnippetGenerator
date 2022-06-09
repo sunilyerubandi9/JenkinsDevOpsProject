@@ -8,8 +8,12 @@
 				stage("Create Artifact for prod") {
 					steps {
 						echo "Creating artifact"
-						snDevOpsArtifact artifactsPayload: '{"artifacts":[{"name": "sa-web.jar", "version": "1.9", "repositoryName": "services-1031"}, {"name": "sa-db.jar", "version": "1.3.2", "repositoryName": "services-1032"}], "branchName": "master"}', ignoreErrors: true
+						snDevOpsArtifact artifactsPayload: '{"artifacts":[{"namexyz": "sa-web.jar", "version": "1.9", "repositoryName": "services-1031"}, {"name": "sa-db.jar", "version": "1.3.2", "repositoryName": "services-1032"}], "branchName": "master"}', ignoreErrors: true
 				             }
+					     
+					steps {
+						echo "Creating artifact222"
+					     }
 		               }
 			       
 			       stage("Create Package for prod") {
