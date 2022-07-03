@@ -42,6 +42,7 @@ pipeline {
         stage('Download-JFrog') {
             steps {
                 echo 'downloading jfrog artifact from jfrog'
+                sleep 10
             }
             
             post {
@@ -50,7 +51,7 @@ pipeline {
                              def server = Artifactory.server 'devopsbalujfrog'
                              def downSpec= """{
                                 "files": [{
-                                   "pattern": "sunil-snow-libs-snapshot-local/82/JenkinsDevOpsProject-1.36.0-SNAPSHOT.jar",
+                                   "pattern": "sunil-snow-libs-snapshot-local/${env.BUILD_NUMBER}/JenkinsDevOpsProject-1.36.0-SNAPSHOT.jar",
                                    "target":"/tmp/"
                                 }]
                              }"""
