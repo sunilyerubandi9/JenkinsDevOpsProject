@@ -51,7 +51,7 @@ pipeline {
                              def server = Artifactory.server 'JFROG1'
                              def downSpec= """{
                                 "files": [{
-                                   "pattern": "sunil-docker-local-repo1${env.BUILD_NUMBER}/JenkinsDevOpsProject-1.36.0-SNAPSHOT.jar",
+                                   "pattern": "sunil-docker-local-repo1/${env.BUILD_NUMBER}/JenkinsDevOpsProject-1.36.0-SNAPSHOT.jar",
                                    "target":"/tmp/"
                                 }]
                              }"""
