@@ -76,3 +76,5 @@ Update 14 - Adding the Jenkins file fo JFrog Artifacts import
 Updating the Readme File
 
 Updating the Readme File 001
+
+Running Jenkins pipeline for chagne accelerations
